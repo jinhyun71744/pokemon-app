@@ -67,7 +67,7 @@ const PokemonDeck = () => {
         {deck.map((p, index) => {
           return (
             <DeckCard key={p.id} $index={index}>
-              <PokemonCard pokemon={p} onDeleteToDeck={handleDelete} />
+              <PokemonCard pokemon={p} deleteFromDeck={handleDelete} />
             </DeckCard>
           );
         })}

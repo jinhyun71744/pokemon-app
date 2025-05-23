@@ -1,6 +1,5 @@
 import DashBoard from "../components/DashBoard";
 import styled from "styled-components";
-import { DeckProvider } from "../context/DeckContext";
 
 const PageWrapper = styled.div`
   background-color: #e8e89a;
@@ -22,13 +21,11 @@ const Container = styled.div`
 
 const Dex = () => {
   return (
-    <DeckProvider>
-      <PageWrapper>
-        <Container>
-          <DashBoard />
-        </Container>
-      </PageWrapper>
-    </DeckProvider>
+    <PageWrapper>
+      <Container>
+        <DashBoard />
+      </Container>
+    </PageWrapper>
   );
 };
 

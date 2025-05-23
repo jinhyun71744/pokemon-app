@@ -22,7 +22,7 @@ const PokemonList = () => {
       <h2>포켓몬 리스트</h2>
       <ListContainer>
         {POKEMON_DATA.map((p) => {
-          return <PokemonCard key={p.id} pokemon={p} onAddToDeck={handleAdd} />;
+          return <PokemonCard key={p.id} pokemon={p} addToDeck={handleAdd} />;
         })}
       </ListContainer>
     </div>

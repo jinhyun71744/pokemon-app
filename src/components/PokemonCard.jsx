@@ -53,16 +53,15 @@ const AddButton = styled.button`
   }
 `;
 
-const PokemonCard = ({ pokemon, onAddToDeck, onDeleteToDeck }) => {
-  const isInDeck = typeof onDeleteToDeck === "function";
-
+const PokemonCard = ({ pokemon, addToDeck, deleteFromDeck }) => {
+  const isInDeck = typeof deleteFromDeck === "function";
   const name = isInDeck ? "삭제" : "추가";
 
   const handleClick = () => {
     if (isInDeck) {
-      onDeleteToDeck(pokemon);
+      deleteFromDeck(pokemon);
     } else {
-      onAddToDeck(pokemon);
+      addToDeck(pokemon);
     }
   };
 
