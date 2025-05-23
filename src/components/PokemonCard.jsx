@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -55,7 +54,6 @@ const AddButton = styled.button`
 `;
 
 const PokemonCard = ({ pokemon, onAddToDeck, onDeleteToDeck }) => {
-  // console.log(deck);
   const isInDeck = typeof onDeleteToDeck === "function";
 
   const name = isInDeck ? "삭제" : "추가";

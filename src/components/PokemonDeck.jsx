@@ -1,7 +1,6 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
-// import { useDeck } from "../context/DeckContext";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFromDeck } from "../redux/slices/deckSlice";
 
@@ -54,8 +53,6 @@ const DeckCard = styled.div`
 `;
 
 const PokemonDeck = () => {
-  // const { deck, onDeleteToDeck } = useDeck();
-
   const deck = useSelector((state) => state.deck.deck);
   const dispatch = useDispatch();
 
