@@ -55,8 +55,8 @@ const AddButton = styled.button`
 
 const PokemonCard = ({ pokemon, addToDeck, deleteFromDeck }) => {
   const isInDeck = typeof deleteFromDeck === "function";
-  const name = isInDeck ? "삭제" : "추가";
 
+  const name = isInDeck ? "삭제" : "추가";
   const handleClick = () => {
     if (isInDeck) {
       deleteFromDeck(pokemon);
