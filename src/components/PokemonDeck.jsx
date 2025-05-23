@@ -1,7 +1,9 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
-import { useDeck } from "../context/DeckContext";
+// import { useDeck } from "../context/DeckContext";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteFromDeck } from "../redux/slices/deckSlice";
 
 const DeckContainer = styled.div`
   background-color: #feffec;
@@ -52,7 +54,14 @@ const DeckCard = styled.div`
 `;
 
 const PokemonDeck = () => {
-  const { deck, onDeleteToDeck } = useDeck();
+  // const { deck, onDeleteToDeck } = useDeck();
+
+  const deck = useSelector((state) => state.deck.deck);
+  const dispatch = useDispatch();
+
+  const handleDelete = (pokemon) => {
+    dispatch(deleteFromDeck(pokemon));
+  };
 
   return (
     <DeckContainer>
@@ -61,7 +70,7 @@ const PokemonDeck = () => {
         {deck.map((p, index) => {
           return (
             <DeckCard key={p.id} $index={index}>
-              <PokemonCard pokemon={p} onDeleteToDeck={onDeleteToDeck} />
+              <PokemonCard pokemon={p} onDeleteToDeck={handleDelete} />
             </DeckCard>
           );
         })}

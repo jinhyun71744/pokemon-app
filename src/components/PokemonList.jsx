@@ -2,7 +2,9 @@ import React from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
 import POKEMON_DATA from "../data/pokemon";
-import { useDeck } from "../context/DeckContext";
+// import { useDeck } from "../context/DeckContext";
+import { addToDeck } from "../redux/slices/deckSlice";
+import { useDispatch } from "react-redux";
 
 const ListContainer = styled.div`
   display: grid;
@@ -11,15 +13,20 @@ const ListContainer = styled.div`
 `;
 
 const PokemonList = () => {
-  const { onAddToDeck } = useDeck();
+  // const { onAddToDeck } = useDeck();
+
+  const disfatch = useDispatch();
+
+  const handleAdd = (pokemon) => {
+    disfatch(addToDeck(pokemon));
+  };
+
   return (
     <div>
       <h2>포켓몬 리스트</h2>
       <ListContainer>
         {POKEMON_DATA.map((p) => {
-          return (
-            <PokemonCard key={p.id} pokemon={p} onAddToDeck={onAddToDeck} />
-          );
+          return <PokemonCard key={p.id} pokemon={p} onAddToDeck={handleAdd} />;
         })}
       </ListContainer>
     </div>
