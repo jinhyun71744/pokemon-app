@@ -31,7 +31,7 @@ const DeckCard = styled.div`
   }
 `;
 
-const PokemnDeck = ({ deck }) => {
+const PokemnDeck = ({ deck, onDeleteToDeck }) => {
   return (
     <DeckContainer>
       <h1>포캣몬 댁</h1>
@@ -39,7 +39,7 @@ const PokemnDeck = ({ deck }) => {
         {deck.map((p) => {
           return (
             <DeckCard key={p.id}>
-              <PokemonCard pokemon={p} />
+              <PokemonCard pokemon={p} onDeleteToDeck={onDeleteToDeck} />
             </DeckCard>
           );
         })}

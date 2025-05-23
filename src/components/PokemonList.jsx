@@ -8,20 +8,14 @@ const ListContainer = styled.div`
   gap: 1rem;
 `;
 
-const PokemonList = ({ deck, pokemon, onAddToDeck, onDeleteToDeck }) => {
+const PokemonList = ({ pokemon, onAddToDeck }) => {
   return (
     <div>
       <h2>포켓몬 리스트</h2>
       <ListContainer>
         {pokemon.map((p) => {
           return (
-            <PokemonCard
-              key={p.id}
-              deck={deck}
-              pokemon={p}
-              onAddToDeck={onAddToDeck}
-              onDeleteToDeck={onDeleteToDeck}
-            />
+            <PokemonCard key={p.id} pokemon={p} onAddToDeck={onAddToDeck} />
           );
         })}
       </ListContainer>

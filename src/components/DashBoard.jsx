@@ -6,13 +6,8 @@ import PokemnDeck from "./PokemnDeck";
 const DashBoard = ({ pokemon, deck, onAddToDeck, onDeleteToDeck }) => {
   return (
     <div>
-      <PokemnDeck deck={deck} />
-      <PokemonList
-        deck={deck}
-        pokemon={pokemon}
-        onAddToDeck={onAddToDeck}
-        onDeleteToDeck={onDeleteToDeck}
-      />
+      <PokemnDeck deck={deck} onDeleteToDeck={onDeleteToDeck} />
+      <PokemonList pokemon={pokemon} onAddToDeck={onAddToDeck} />
     </div>
   );
 };

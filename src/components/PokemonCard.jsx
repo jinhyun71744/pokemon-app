@@ -54,9 +54,20 @@ const AddButton = styled.button`
   }
 `;
 
-const PokemonCard = ({ deck, pokemon, onAddToDeck, onDeleteToDeck }) => {
+const PokemonCard = ({ pokemon, onAddToDeck, onDeleteToDeck }) => {
   // console.log(deck);
-  console.log(deck);
+  const isInDeck = typeof onDeleteToDeck === "function";
+
+  const name = isInDeck ? "삭제" : "추가";
+
+  const handleClick = () => {
+    if (isInDeck) {
+      onDeleteToDeck(pokemon);
+    } else {
+      onAddToDeck(pokemon);
+    }
+  };
+
   return (
     <Card>
       <Link to={`/dex/${pokemon.id}`}>
@@ -64,7 +75,7 @@ const PokemonCard = ({ deck, pokemon, onAddToDeck, onDeleteToDeck }) => {
       </Link>
       <CardName>{pokemon.korean_name}</CardName>
       <p>No.{pokemon.id}</p>
-      <AddButton onClick={() => onAddToDeck(pokemon)}>추가</AddButton>
+      <AddButton onClick={handleClick}>{name}</AddButton>
     </Card>
   );
 };

@@ -4,7 +4,7 @@ import POKEMON_DATA from "../data/pokemon";
 import styled from "styled-components";
 
 const PageWrapper = styled.div`
-  background-color: #f0f2b2;
+  background-color: #e8e89a;
   min-height: 100vh;
 `;
 
