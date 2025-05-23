@@ -1,6 +1,7 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
+import { useDeck } from "../context/DeckContext";
 
 const DeckContainer = styled.div`
   background-color: #feffec;
@@ -50,7 +51,9 @@ const DeckCard = styled.div`
   }
 `;
 
-const PokemonDeck = ({ deck, onDeleteToDeck }) => {
+const PokemonDeck = () => {
+  const { deck, onDeleteToDeck } = useDeck();
+
   return (
     <DeckContainer>
       <h1>포캣몬 댁</h1>

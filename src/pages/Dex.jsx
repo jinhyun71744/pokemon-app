@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import DashBoard from "../components/DashBoard";
 import POKEMON_DATA from "../data/pokemon";
 import styled from "styled-components";
+import { DeckProvider } from "../context/DeckContext";
 
 const PageWrapper = styled.div`
   background-color: #e8e89a;
@@ -22,37 +23,39 @@ const Container = styled.div`
 `;
 
 const Dex = () => {
-  const [deck, setDeck] = useState([]);
+  // const [deck, setDeck] = useState([]);
 
-  const handleAddToDeck = (pokemon) => {
-    if (deck.find((p) => p.id === pokemon.id)) {
-      alert(`이미 선택한 포캣몬입니다.`);
-      return;
-    }
+  // const handleAddToDeck = (pokemon) => {
+  //   if (deck.find((p) => p.id === pokemon.id)) {
+  //     alert(`이미 선택한 포캣몬입니다.`);
+  //     return;
+  //   }
 
-    if (deck.length >= 6) {
-      alert(`더 이상 선택할 수 없습니다. `);
-      return;
-    }
+  //   if (deck.length >= 6) {
+  //     alert(`더 이상 선택할 수 없습니다. `);
+  //     return;
+  //   }
 
-    setDeck([...deck, pokemon]);
-  };
+  //   setDeck([...deck, pokemon]);
+  // };
 
-  const handleDeleteToDeck = (pokemon) => {
-    setDeck(deck.filter((p) => p.id !== pokemon.id));
-  };
+  // const handleDeleteToDeck = (pokemon) => {
+  //   setDeck(deck.filter((p) => p.id !== pokemon.id));
+  // };
 
   return (
-    <PageWrapper>
-      <Container>
-        <DashBoard
-          pokemon={POKEMON_DATA}
-          deck={deck}
-          onAddToDeck={handleAddToDeck}
-          onDeleteToDeck={handleDeleteToDeck}
-        />
-      </Container>
-    </PageWrapper>
+    <DeckProvider>
+      <PageWrapper>
+        <Container>
+          <DashBoard
+          // pokemon={POKEMON_DATA}
+          // deck={deck}
+          // onAddToDeck={handleAddToDeck}
+          // onDeleteToDeck={handleDeleteToDeck}
+          />
+        </Container>
+      </PageWrapper>
+    </DeckProvider>
   );
 };
 
