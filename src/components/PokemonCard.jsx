@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -57,10 +59,25 @@ const PokemonCard = ({ pokemon, addToDeck, deleteFromDeck }) => {
   const isInDeck = typeof deleteFromDeck === "function";
 
   const name = isInDeck ? "삭제" : "추가";
+
+  const deck = useSelector((state) => state.deck.deck);
+
   const handleClick = () => {
     if (isInDeck) {
       deleteFromDeck(pokemon);
     } else {
+      const isExisting = deck.find((p) => p.id === pokemon.id);
+
+      if (isExisting) {
+        toast.error(`이미 선택한 포캣몬입니다.`);
+        return;
+      }
+
+      if (deck.length >= 6) {
+        toast.error(`더 이상 선택할 수 없습니다. `);
+        return;
+      }
+
       addToDeck(pokemon);
     }
   };

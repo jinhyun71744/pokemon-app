@@ -4,6 +4,7 @@ import POKEMON_DATA from "../data/pokemon";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { addToDeck, deleteFromDeck } from "../redux/slices/deckSlice";
+import { toast } from "react-toastify";
 
 const DetailContainer = styled.div`
   display: flex;
@@ -44,6 +45,11 @@ const Detail = () => {
     if (isInDeck) {
       disfatch(deleteFromDeck(pokemon));
     } else {
+      if (deck.length >= 6) {
+        toast.error(`더 이상 선택할 수 없습니다. `);
+        return;
+      }
+
       disfatch(addToDeck(pokemon));
     }
   };
