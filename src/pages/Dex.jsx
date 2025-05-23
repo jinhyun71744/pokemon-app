@@ -1,6 +1,4 @@
-import React from "react";
 import DashBoard from "../components/DashBoard";
-import POKEMON_DATA from "../data/pokemon";
 import styled from "styled-components";
 import { DeckProvider } from "../context/DeckContext";
 
@@ -23,36 +21,11 @@ const Container = styled.div`
 `;
 
 const Dex = () => {
-  // const [deck, setDeck] = useState([]);
-
-  // const handleAddToDeck = (pokemon) => {
-  //   if (deck.find((p) => p.id === pokemon.id)) {
-  //     alert(`이미 선택한 포캣몬입니다.`);
-  //     return;
-  //   }
-
-  //   if (deck.length >= 6) {
-  //     alert(`더 이상 선택할 수 없습니다. `);
-  //     return;
-  //   }
-
-  //   setDeck([...deck, pokemon]);
-  // };
-
-  // const handleDeleteToDeck = (pokemon) => {
-  //   setDeck(deck.filter((p) => p.id !== pokemon.id));
-  // };
-
   return (
     <DeckProvider>
       <PageWrapper>
         <Container>
-          <DashBoard
-          // pokemon={POKEMON_DATA}
-          // deck={deck}
-          // onAddToDeck={handleAddToDeck}
-          // onDeleteToDeck={handleDeleteToDeck}
-          />
+          <DashBoard />
         </Container>
       </PageWrapper>
     </DeckProvider>
