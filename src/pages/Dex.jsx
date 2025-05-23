@@ -25,13 +25,13 @@ const Dex = () => {
   const [deck, setDeck] = useState([]);
 
   const handleAddToDeck = (pokemon) => {
-    if (deck.length >= 6) {
-      alert(`6마리만 선택 가능`);
+    if (deck.find((p) => p.id === pokemon.id)) {
+      alert(`이미 선택한 포캣몬입니다.`);
       return;
     }
 
-    if (deck.find((p) => p.id === pokemon.id)) {
-      alert(`이미 댁에 있는 카드입니다.`);
+    if (deck.length >= 6) {
+      alert(`더 이상 선택할 수 없습니다. `);
       return;
     }
 
